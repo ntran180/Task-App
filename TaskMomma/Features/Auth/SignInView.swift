@@ -140,4 +140,7 @@ struct SignInView: View {
         }
     }
 }
+#Preview {
+    SignInView()
+}
 

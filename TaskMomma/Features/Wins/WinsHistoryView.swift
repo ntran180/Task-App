@@ -49,4 +49,6 @@ struct WinsHistoryView: View {
         return taskRepository.wins.filter { $0.completedAt >= weekAgo }
     }
 }
-
+#Preview {
+    WinsHistoryView()
+}

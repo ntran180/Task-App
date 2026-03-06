@@ -80,4 +80,6 @@ struct HomeView: View {
         isShowingTaskCard = true
     }
 }
-
+#Preview {
+    HomeView()
+}

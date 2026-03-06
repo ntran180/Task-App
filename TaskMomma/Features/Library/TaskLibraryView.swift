@@ -91,4 +91,7 @@ struct TaskLibraryView: View {
         }
     }
 }
+#Preview {
+    TaskLibraryView()
+}
 

@@ -22,4 +22,7 @@ struct RootView: View {
         .animation(.easeInOut, value: hasOnboarded)
     }
 }
+#Preview {
+    RootView()
+}
 

@@ -84,4 +84,7 @@ private struct OnboardingPageView: View {
         }
     }
 }
+#Preview {
+    OnboardingView()
+}
 

@@ -56,4 +56,7 @@ struct MainContainerView: View {
         }
     }
 }
+#Preview {
+    MainContainerView()
+}
 
