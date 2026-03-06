@@ -1,0 +1,463 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B10000000000000000000001 /* TaskMommaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000001 /* TaskMommaApp.swift */; };
+		B10000000000000000000002 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000002 /* RootView.swift */; };
+		B10000000000000000000003 /* ViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000003 /* ViewModels.swift */; };
+		B10000000000000000000004 /* TaskModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000004 /* TaskModels.swift */; };
+		B10000000000000000000005 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000005 /* AuthService.swift */; };
+		B10000000000000000000006 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000006 /* FirestoreService.swift */; };
+		B10000000000000000000007 /* SuggestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000007 /* SuggestService.swift */; };
+		B10000000000000000000008 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000008 /* SplashView.swift */; };
+		B10000000000000000000009 /* AuthFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000009 /* AuthFlowView.swift */; };
+		B1000000000000000000000A /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000000000000000000000A /* SignInView.swift */; };
+		B1000000000000000000000B /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000000000000000000000B /* OnboardingView.swift */; };
+		B1000000000000000000000C /* MainContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000000000000000000000C /* MainContainerView.swift */; };
+		B1000000000000000000000D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000000000000000000000D /* HomeView.swift */; };
+		B1000000000000000000000E /* TaskCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000000000000000000000E /* TaskCardView.swift */; };
+		B1000000000000000000000F /* TaskLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000000000000000000000F /* TaskLibraryView.swift */; };
+		B10000000000000000000010 /* TaskEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000010 /* TaskEditorView.swift */; };
+		B10000000000000000000011 /* WinsHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000011 /* WinsHistoryView.swift */; };
+		B10000000000000000000012 /* WinCelebrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000012 /* WinCelebrationView.swift */; };
+		B10000000000000000000013 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000013 /* SettingsView.swift */; };
+		B10000000000000000000014 /* DurationPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000014 /* DurationPicker.swift */; };
+		B10000000000000000000015 /* TimerRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000015 /* TimerRingView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E10000000000000000000001 /* TaskMomma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskMomma.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F10000000000000000000001 /* TaskMommaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskMommaApp.swift; sourceTree = "<group>"; };
+		F10000000000000000000002 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		F10000000000000000000003 /* ViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModels.swift; sourceTree = "<group>"; };
+		F10000000000000000000004 /* TaskModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModels.swift; sourceTree = "<group>"; };
+		F10000000000000000000005 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		F10000000000000000000006 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
+		F10000000000000000000007 /* SuggestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestService.swift; sourceTree = "<group>"; };
+		F10000000000000000000008 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		F10000000000000000000009 /* AuthFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlowView.swift; sourceTree = "<group>"; };
+		F1000000000000000000000A /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		F1000000000000000000000B /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		F1000000000000000000000C /* MainContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerView.swift; sourceTree = "<group>"; };
+		F1000000000000000000000D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		F1000000000000000000000E /* TaskCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCardView.swift; sourceTree = "<group>"; };
+		F1000000000000000000000F /* TaskLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskLibraryView.swift; sourceTree = "<group>"; };
+		F10000000000000000000010 /* TaskEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEditorView.swift; sourceTree = "<group>"; };
+		F10000000000000000000011 /* WinsHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinsHistoryView.swift; sourceTree = "<group>"; };
+		F10000000000000000000012 /* WinCelebrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinCelebrationView.swift; sourceTree = "<group>"; };
+		F10000000000000000000013 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		F10000000000000000000014 /* DurationPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationPicker.swift; sourceTree = "<group>"; };
+		F10000000000000000000015 /* TimerRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerRingView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C10000000000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			sourceTree = "<group>";
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D10000000000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				D10000000000000000000002 /* TaskMomma */,
+				E10000000000000000000002 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D10000000000000000000002 /* TaskMomma */ = {
+			isa = PBXGroup;
+			children = (
+				D10000000000000000000003 /* App */,
+				D10000000000000000000004 /* Features */,
+				D10000000000000000000005 /* Models */,
+				D10000000000000000000006 /* Services */,
+				D10000000000000000000007 /* Components */,
+			);
+			path = TaskMomma;
+			sourceTree = "<group>";
+		};
+		D10000000000000000000003 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F10000000000000000000001 /* TaskMommaApp.swift */,
+				F10000000000000000000002 /* RootView.swift */,
+				F10000000000000000000003 /* ViewModels.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		D10000000000000000000004 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				D10000000000000000000008 /* Auth */,
+				D10000000000000000000009 /* Onboarding */,
+				D1000000000000000000000A /* Main */,
+				D1000000000000000000000B /* Home */,
+				D1000000000000000000000C /* TaskCard */,
+				D1000000000000000000000D /* Library */,
+				D1000000000000000000000E /* Wins */,
+				D1000000000000000000000F /* Settings */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		D10000000000000000000005 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F10000000000000000000004 /* TaskModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D10000000000000000000006 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F10000000000000000000005 /* AuthService.swift */,
+				F10000000000000000000006 /* FirestoreService.swift */,
+				F10000000000000000000007 /* SuggestService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D10000000000000000000007 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F10000000000000000000014 /* DurationPicker.swift */,
+				F10000000000000000000015 /* TimerRingView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		D10000000000000000000008 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				F10000000000000000000008 /* SplashView.swift */,
+				F10000000000000000000009 /* AuthFlowView.swift */,
+				F1000000000000000000000A /* SignInView.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		D10000000000000000000009 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				F1000000000000000000000B /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		D1000000000000000000000A /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				F1000000000000000000000C /* MainContainerView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		D1000000000000000000000B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				F1000000000000000000000D /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		D1000000000000000000000C /* TaskCard */ = {
+			isa = PBXGroup;
+			children = (
+				F1000000000000000000000E /* TaskCardView.swift */,
+			);
+			path = TaskCard;
+			sourceTree = "<group>";
+		};
+		D1000000000000000000000D /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				F1000000000000000000000F /* TaskLibraryView.swift */,
+				F10000000000000000000010 /* TaskEditorView.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		D1000000000000000000000E /* Wins */ = {
+			isa = PBXGroup;
+			children = (
+				F10000000000000000000011 /* WinsHistoryView.swift */,
+				F10000000000000000000012 /* WinCelebrationView.swift */,
+			);
+			path = Wins;
+			sourceTree = "<group>";
+		};
+		D1000000000000000000000F /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				F10000000000000000000013 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		E10000000000000000000002 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E10000000000000000000001 /* TaskMomma.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A10000000000000000000001 /* TaskMomma */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C20000000000000000000002 /* Build configuration list for PBXNativeTarget "TaskMomma" */;
+			buildPhases = (
+				C10000000000000000000002 /* Sources */,
+				C10000000000000000000001 /* Frameworks */,
+				C10000000000000000000003 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TaskMomma;
+			productName = TaskMomma;
+			productReference = E10000000000000000000001 /* TaskMomma.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		P10000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+			};
+			buildConfigurationList = C20000000000000000000001 /* Build configuration list for PBXProject "TaskMomma" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D10000000000000000000001;
+			productRefGroup = E10000000000000000000002 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A10000000000000000000001 /* TaskMomma */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C10000000000000000000003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			sourceTree = "<group>";
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C10000000000000000000002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B10000000000000000000001 /* TaskMommaApp.swift in Sources */,
+				B10000000000000000000002 /* RootView.swift in Sources */,
+				B10000000000000000000003 /* ViewModels.swift in Sources */,
+				B10000000000000000000004 /* TaskModels.swift in Sources */,
+				B10000000000000000000005 /* AuthService.swift in Sources */,
+				B10000000000000000000006 /* FirestoreService.swift in Sources */,
+				B10000000000000000000007 /* SuggestService.swift in Sources */,
+				B10000000000000000000008 /* SplashView.swift in Sources */,
+				B10000000000000000000009 /* AuthFlowView.swift in Sources */,
+				B1000000000000000000000A /* SignInView.swift in Sources */,
+				B1000000000000000000000B /* OnboardingView.swift in Sources */,
+				B1000000000000000000000C /* MainContainerView.swift in Sources */,
+				B1000000000000000000000D /* HomeView.swift in Sources */,
+				B1000000000000000000000E /* TaskCardView.swift in Sources */,
+				B1000000000000000000000F /* TaskLibraryView.swift in Sources */,
+				B10000000000000000000010 /* TaskEditorView.swift in Sources */,
+				B10000000000000000000011 /* WinsHistoryView.swift in Sources */,
+				B10000000000000000000012 /* WinCelebrationView.swift in Sources */,
+				B10000000000000000000013 /* SettingsView.swift in Sources */,
+				B10000000000000000000014 /* DurationPicker.swift in Sources */,
+				B10000000000000000000015 /* TimerRingView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			sourceTree = "<group>";
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		X10000000000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		X10000000000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		X10000000000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.uw.taskmomma;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+			};
+			name = Debug;
+		};
+		X10000000000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.uw.taskmomma;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C20000000000000000000001 /* Build configuration list for PBXProject "TaskMomma" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				X10000000000000000000001 /* Debug */,
+				X10000000000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C20000000000000000000002 /* Build configuration list for PBXNativeTarget "TaskMomma" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				X10000000000000000000003 /* Debug */,
+				X10000000000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = P10000000000000000000001 /* Project object */;
+}
