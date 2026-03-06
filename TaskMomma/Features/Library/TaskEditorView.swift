@@ -3,6 +3,7 @@ import SwiftUI
 struct TaskEditorView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var authViewModel: AuthViewModel
+    @EnvironmentObject private var taskRepository: TaskRepository
 
     let existingTask: TaskItem?
 
@@ -71,7 +72,7 @@ struct TaskEditorView: View {
 
     private func save() async {
         errorMessage = nil
-        guard let uid = authViewModel.user?.id else {
+        guard authViewModel.user != nil else {
             dismiss()
             return
         }
@@ -89,6 +90,13 @@ struct TaskEditorView: View {
         task.durationMinutes = durationMinutes
         task.isArchived = isArchived
 
+        if authViewModel.isDemoUser {
+            taskRepository.createOrUpdateTaskLocally(task)
+            dismiss()
+            return
+        }
+
+        guard let uid = authViewModel.user?.id else { return }
         do {
             if existingTask == nil {
                 try await FirestoreService.shared.createTask(task, uid: uid)

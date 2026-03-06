@@ -54,10 +54,15 @@ struct SettingsView: View {
 
     private func saveDisplayName() async {
         errorMessage = nil
-        guard let uid = authViewModel.user?.id else { return }
         let name = displayNameDraft.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !name.isEmpty else { return }
 
+        if authViewModel.isDemoUser {
+            authViewModel.updateDisplayNameForDemo(name)
+            return
+        }
+
+        guard let uid = authViewModel.user?.id else { return }
         isSavingName = true
         defer { isSavingName = false }
 

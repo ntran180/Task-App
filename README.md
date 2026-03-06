@@ -1,3 +1,9 @@
+# Task-Momma — iOS App (SwiftUI + Firebase)
+
+The app source code lives in `TaskMomma/`. Start with `TaskMomma/README_TaskMomma.md` for Firebase + Xcode setup.
+
+---
+
 # Task Randomizer — Today's Work Session Guide
 
 Here's a breakdown of what to tackle today, organized by priority.
@@ -9,7 +15,6 @@ Here's a breakdown of what to tackle today, organized by priority.
 Email your professor and TA with everyone's names and a team name. This is a deliverable and it's easy — just do it now.
 
 ---
-
 ## 2. Nail Down the App Concept
 
 Before touching any code or slides, make sure everyone agrees on exactly what the app is. For Task Randomizer, the core loop is:

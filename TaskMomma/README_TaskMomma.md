@@ -2,6 +2,12 @@
 
 This repo contains the SwiftUI source code for **Task-Momma**, a “tiny task randomizer” app backed by **Firebase Auth** + **Firestore**.
 
+### Run on simulator (no Firebase yet)
+
+1. Open **`TaskMomma.xcodeproj`** in Xcode (it’s in the repo root, next to the `TaskMomma/` source folder).
+2. Choose an iPhone simulator (e.g. iPhone 16) and press **Run** (⌘R).
+3. The app will build and launch. You’ll see Splash → Sign In (Firebase isn’t linked yet, so sign-in won’t complete until you add Firebase and `GoogleService-Info.plist`).
+
 ### What’s implemented
 
 - **10 screens**: Splash/Auth Gate, Onboarding, Sign In, Home, Task Card (timer), Win Screen, Task Library, Add/Edit Task, Wins History, Settings.
@@ -11,15 +17,14 @@ This repo contains the SwiftUI source code for **Task-Momma**, a “tiny task ra
 
 ### Firebase setup (Xcode)
 
-1. Create an Xcode SwiftUI iOS project (iOS 17+).
-2. Drag the `TaskMomma/` folder into the project.
-3. Add Firebase via Swift Package Manager:
+1. Use the existing **TaskMomma.xcodeproj** (or create a new iOS 17+ app and add the `TaskMomma/` folder to the target).
+2. Add Firebase via Swift Package Manager:
    - `FirebaseAuth`
    - `FirebaseFirestore`
    - `FirebaseCore`
-4. Add your `GoogleService-Info.plist` to the app target.
-5. In Xcode “Signing & Capabilities”, add **Sign In with Apple**.
-6. Run the app. On first sign-in, it will:
+3. Add your `GoogleService-Info.plist` to the app target.
+4. In Xcode “Signing & Capabilities”, add **Sign In with Apple**.
+5. Run the app. On first sign-in, it will:
    - Create `/users/{uid}` if missing
    - Seed default tasks into `/users/{uid}/tasks`
 

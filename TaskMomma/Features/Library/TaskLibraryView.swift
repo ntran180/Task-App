@@ -66,8 +66,17 @@ struct TaskLibraryView: View {
 
     private func archive(at offsets: IndexSet) {
         errorMessage = nil
-        guard let uid = authViewModel.user?.id else { return }
+        guard authViewModel.user != nil else { return }
 
+        if authViewModel.isDemoUser {
+            for index in offsets {
+                let task = filteredTasks[index]
+                taskRepository.archiveTaskLocally(taskId: task.id)
+            }
+            return
+        }
+
+        guard let uid = authViewModel.user?.id else { return }
         for index in offsets {
             let task = filteredTasks[index]
             Task {

@@ -1,9 +1,14 @@
 import SwiftUI
 import AuthenticationServices
 
+private let testAccountEmail = "test@test.com"
+private let testAccountPassword = "12345678"
+
 struct SignInView: View {
-    @State private var email: String = ""
-    @State private var password: String = ""
+    @EnvironmentObject private var authViewModel: AuthViewModel
+
+    @State private var email: String = testAccountEmail
+    @State private var password: String = testAccountPassword
     @State private var isLoading: Bool = false
     @State private var errorMessage: String?
 
@@ -114,6 +119,12 @@ struct SignInView: View {
     private func signInWithEmail() async {
         guard !email.isEmpty, !password.isEmpty else {
             errorMessage = "Please enter email and password."
+            return
+        }
+
+        // Test account: see full UI without Firebase
+        if email == testAccountEmail && password == testAccountPassword {
+            authViewModel.signInWithTestAccount()
             return
         }
 
