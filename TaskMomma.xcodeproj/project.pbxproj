@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		722749502F610FDE005E659B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7227494F2F610FD7005E659B /* LocationManager.swift */; };
 		B10000000000000000000001 /* TaskMommaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000001 /* TaskMommaApp.swift */; };
 		B10000000000000000000002 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000002 /* RootView.swift */; };
 		B10000000000000000000003 /* ViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000003 /* ViewModels.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7227494F2F610FD7005E659B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E10000000000000000000001 /* TaskMomma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskMomma.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F10000000000000000000001 /* TaskMommaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskMommaApp.swift; sourceTree = "<group>"; };
 		F10000000000000000000002 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -62,11 +64,18 @@
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			sourceTree = "<group>";
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7227494E2F610FD0005E659B /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				7227494F2F610FD7005E659B /* LocationManager.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
 		D10000000000000000000001 = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +87,7 @@
 		D10000000000000000000002 /* TaskMomma */ = {
 			isa = PBXGroup;
 			children = (
+				7227494E2F610FD0005E659B /* Location */,
 				D10000000000000000000003 /* App */,
 				D10000000000000000000004 /* Features */,
 				D10000000000000000000005 /* Models */,
@@ -270,7 +280,6 @@
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			sourceTree = "<group>";
 		};
 /* End PBXResourcesBuildPhase section */
 
@@ -293,6 +302,7 @@
 				B1000000000000000000000C /* MainContainerView.swift in Sources */,
 				B1000000000000000000000D /* HomeView.swift in Sources */,
 				B1000000000000000000000E /* TaskCardView.swift in Sources */,
+				722749502F610FDE005E659B /* LocationManager.swift in Sources */,
 				B1000000000000000000000F /* TaskLibraryView.swift in Sources */,
 				B10000000000000000000010 /* TaskEditorView.swift in Sources */,
 				B10000000000000000000011 /* WinsHistoryView.swift in Sources */,
@@ -302,7 +312,6 @@
 				B10000000000000000000015 /* TimerRingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			sourceTree = "<group>";
 		};
 /* End PBXSourcesBuildPhase section */
 
@@ -388,11 +397,13 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We use your location to help providing tasks.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -403,7 +414,6 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 			};
 			name = Debug;
 		};
@@ -417,11 +427,13 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We use your location to help providing tasks.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -432,7 +444,6 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 			};
 			name = Release;
 		};
