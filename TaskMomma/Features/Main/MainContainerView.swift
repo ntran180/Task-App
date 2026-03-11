@@ -58,5 +58,8 @@ struct MainContainerView: View {
 }
 #Preview {
     MainContainerView()
+        .environmentObject(TaskRepository())
+        .environmentObject(AuthViewModel())
+    
+    
 }
-

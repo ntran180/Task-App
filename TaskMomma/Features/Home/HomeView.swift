@@ -82,4 +82,6 @@ struct HomeView: View {
 }
 #Preview {
     HomeView()
+        .environmentObject(TaskRepository())
+        .environmentObject(AuthViewModel())
 }

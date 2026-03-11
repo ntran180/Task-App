@@ -51,4 +51,5 @@ struct WinsHistoryView: View {
 }
 #Preview {
     WinsHistoryView()
+        .environmentObject(TaskRepository())
 }

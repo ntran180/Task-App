@@ -93,5 +93,7 @@ struct TaskLibraryView: View {
 }
 #Preview {
     TaskLibraryView()
+        .environmentObject(TaskRepository())
+        .environmentObject(AuthViewModel())
 }
 
