@@ -32,13 +32,13 @@ struct MainContainerView: View {
             }
             .tag(2)
 
-            NavigationStack {
-                LeaderboardView()
-            }
-            .tabItem {
-                Label("Leaderboard", systemImage: "trophy.fill")
-            }
-            .tag(3)
+//            NavigationStack {
+//                LeaderboardView()
+//            }
+//            .tabItem {
+//                Label("Leaderboard", systemImage: "trophy.fill")
+//            }
+//            .tag(3)
 
             NavigationStack {
                 SettingsView()
@@ -68,6 +68,7 @@ struct MainContainerView: View {
     MainContainerView()
         .environmentObject(TaskRepository())
         .environmentObject(AuthViewModel())
+        .environmentObject(LocationManager())
     
     
 }
