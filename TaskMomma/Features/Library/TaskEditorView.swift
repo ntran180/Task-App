@@ -111,4 +111,15 @@ struct TaskEditorView: View {
     }
 }
 
+#Preview {
+    TaskEditorView(existingTask: TaskItem(
+        id: UUID().uuidString,
+        title: "Study",
+        description: "Review lecture notes",
+        durationMinutes: 25
+    ))
+    .environmentObject(AuthViewModel())
+    .environmentObject(TaskRepository())
+}
+
 

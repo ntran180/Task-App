@@ -69,3 +69,9 @@ private struct ConfettiView: View {
     }
 }
 
+#Preview {
+    WinCelebrationView(
+        winNumber: 1,
+        taskTitle: "Study"
+    )
+}

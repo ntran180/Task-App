@@ -129,5 +129,18 @@ struct TaskCardView: View {
     }
 }
 
+#Preview {
+    TaskCardView(
+        task: TaskItem(
+            id: UUID().uuidString,
+            title: "Session",
+            description: "Edit UI",
+            durationMinutes: 5
+        )
+    )
+    .environmentObject(AuthViewModel())
+    .environmentObject(TaskRepository())
+}
+
 
 
