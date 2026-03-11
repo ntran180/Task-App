@@ -124,6 +124,7 @@ struct TaskCardView: View {
 
         Task {
             winNumber = await taskRepository.recordWin(for: task, actualSeconds: actualSeconds, uid: uid)
+            await taskRepository.archiveTask(taskId: task.id, uid: uid)
             isShowingWin = true
         }
     }
