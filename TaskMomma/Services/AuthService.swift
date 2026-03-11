@@ -183,7 +183,7 @@ final class AuthService {
         var remaining = length
 
         while remaining > 0 {
-            var randoms: [UInt8] = (0..<16).map { _ in
+            let randoms: [UInt8] = (0..<16).map { _ in
                 UInt8.random(in: 0...255)
             }
             randoms.forEach { random in

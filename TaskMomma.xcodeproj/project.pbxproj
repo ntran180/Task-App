@@ -29,6 +29,7 @@
 		B10000000000000000000013 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000013 /* SettingsView.swift */; };
 		B10000000000000000000014 /* DurationPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000014 /* DurationPicker.swift */; };
 		B10000000000000000000015 /* TimerRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000015 /* TimerRingView.swift */; };
+		B10000000000000000000016 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000016 /* LeaderboardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		F10000000000000000000013 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F10000000000000000000014 /* DurationPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationPicker.swift; sourceTree = "<group>"; };
 		F10000000000000000000015 /* TimerRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerRingView.swift; sourceTree = "<group>"; };
+		F10000000000000000000016 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				D1000000000000000000000C /* TaskCard */,
 				D1000000000000000000000D /* Library */,
 				D1000000000000000000000E /* Wins */,
+				D10000000000000000000010 /* Leaderboard */,
 				D1000000000000000000000F /* Settings */,
 			);
 			path = Features;
@@ -217,6 +220,14 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		D10000000000000000000010 /* Leaderboard */ = {
+			isa = PBXGroup;
+			children = (
+				F10000000000000000000016 /* LeaderboardView.swift */,
+			);
+			path = Leaderboard;
+			sourceTree = "<group>";
+		};
 		E10000000000000000000002 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -310,6 +321,7 @@
 				B10000000000000000000013 /* SettingsView.swift in Sources */,
 				B10000000000000000000014 /* DurationPicker.swift in Sources */,
 				B10000000000000000000015 /* TimerRingView.swift in Sources */,
+				B10000000000000000000016 /* LeaderboardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
