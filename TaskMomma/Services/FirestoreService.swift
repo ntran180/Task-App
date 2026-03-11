@@ -23,6 +23,10 @@ final class FirestoreService {
         db.collection("users").document(uid)
     }
 
+    private func usersCollection() -> FirebaseFirestore.CollectionReference {
+        db.collection("users")
+    }
+
     private func tasksCollection(uid: String) -> FirebaseFirestore.CollectionReference {
         userDoc(uid: uid).collection("tasks")
     }
@@ -194,6 +198,23 @@ final class FirestoreService {
     func updateDisplayName(uid: String, displayName: String) async throws {
         #if canImport(FirebaseFirestore)
         try await userDoc(uid: uid).setData(["displayName": displayName], merge: true)
+        #else
+        throw FirestoreServiceError.firebaseNotLinked
+        #endif
+    }
+
+    // MARK: - Leaderboard
+
+    func fetchLeaderboard(limit: Int = 50) async throws -> [UserProfile] {
+        #if canImport(FirebaseFirestore)
+        let snapshot = try await usersCollection()
+            .order(by: "totalWins", descending: true)
+            .limit(to: limit)
+            .getDocuments()
+
+        return snapshot.documents.compactMap { doc in
+            UserProfile(id: doc.documentID, data: doc.data())
+        }
         #else
         throw FirestoreServiceError.firebaseNotLinked
         #endif

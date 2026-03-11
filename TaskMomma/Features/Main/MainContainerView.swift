@@ -33,12 +33,20 @@ struct MainContainerView: View {
             .tag(2)
 
             NavigationStack {
+                LeaderboardView()
+            }
+            .tabItem {
+                Label("Leaderboard", systemImage: "trophy.fill")
+            }
+            .tag(3)
+
+            NavigationStack {
                 SettingsView()
             }
             .tabItem {
                 Label("Settings", systemImage: "gearshape")
             }
-            .tag(3)
+            .tag(4)
         }
         .task {
             if let uid = authViewModel.user?.id {
