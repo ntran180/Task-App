@@ -130,6 +130,42 @@ final class TaskRepository: ObservableObject {
     func activeTasks(for durationMinutes: Int) -> [TaskItem] {
         tasks.filter { !$0.isArchived && $0.durationMinutes == durationMinutes }
     }
+    
+    func allActiveTasks() -> [TaskItem] {
+        tasks.filter { !$0.isArchived }
+    }
+    
+    func allArchivedTasks() -> [TaskItem] {
+        tasks.filter { $0.isArchived}
+    }
+    
+    func archiveTask(taskId: String, uid: String) async {
+        if let i = tasks.firstIndex(where: { $0.id == taskId}) {
+            tasks[i].isArchived = true
+        }
+        if uid == demoUserID {
+            return
+        }
+        do {
+            try await FirestoreService.shared.archiveTask(taskId: taskId, uid: uid)
+        } catch {
+            print("Failed to archive task: \(error)")
+        }
+    }
+    
+    func restoreTask(taskId: String, uid: String) async {
+        if let i = tasks.firstIndex(where: { $0.id == taskId }) {
+            tasks[i].isArchived = false
+        }
+        if uid == demoUserID {
+            return
+        }
+        do {
+            try await FirestoreService.shared.restoreTask(taskId: taskId, uid: uid)
+        } catch {
+            print("Failed to restore task: \(error)")
+        }
+    }
 
     func recordWin(for task: TaskItem, actualSeconds: Int?, uid: String) async -> Int {
         let win = Win(id: UUID().uuidString, taskId: task.id, taskTitle: task.title, completedAt: Date(), durationActual: actualSeconds)

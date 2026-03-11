@@ -75,6 +75,14 @@ final class FirestoreService {
         throw FirestoreServiceError.firebaseNotLinked
         #endif
     }
+    
+    func restoreTask(taskId: String, uid: String) async throws {
+        #if canImport(FirebaseFirestore)
+        try await tasksCollection(uid: uid).document(taskId).updateData(["isArchived": false])
+        #else
+        throw FirestoreServiceError.firebaseNotLinked
+        #endif
+    }
 
     // MARK: - Wins
 
