@@ -9,7 +9,6 @@ struct HomeView: View {
     @State private var isShowingTaskCard: Bool = false
 
     var body: some View {
-        LocationLabel()
         VStack(spacing: 24) {
             VStack(alignment: .leading, spacing: 8) {
                 Text("Hi, \(authViewModel.user?.displayName ?? "friend")")
@@ -27,6 +26,7 @@ struct HomeView: View {
                 .padding(.horizontal)
 
             Spacer()
+            LocationLabel()
 
             Button {
                 chooseRandomTask()

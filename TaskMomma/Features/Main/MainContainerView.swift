@@ -3,6 +3,7 @@ import SwiftUI
 struct MainContainerView: View {
     @EnvironmentObject private var authViewModel: AuthViewModel
     @EnvironmentObject private var taskRepository: TaskRepository
+    @StateObject private var locationManager = LocationManager()
 
     @State private var selectedTab: Int = 0
 
@@ -31,7 +32,7 @@ struct MainContainerView: View {
                 Label("Wins", systemImage: "rosette")
             }
             .tag(2)
-
+//
 //            NavigationStack {
 //                LeaderboardView()
 //            }
@@ -48,6 +49,7 @@ struct MainContainerView: View {
             }
             .tag(4)
         }
+        .environmentObject(locationManager)
         .task {
             if let uid = authViewModel.user?.id {
                 await taskRepository.startListening(uid: uid)
