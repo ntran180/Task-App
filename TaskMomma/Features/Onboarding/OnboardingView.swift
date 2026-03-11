@@ -36,6 +36,7 @@ struct OnboardingView: View {
                     Button("Skip") {
                         hasOnboarded = true
                     }
+                    .foregroundColor(Color(red: 89/255, green: 77/255, blue: 122/255).opacity(0.8))
                 }
 
                 Spacer()
@@ -50,6 +51,7 @@ struct OnboardingView: View {
                     }
                 }
                 .buttonStyle(.borderedProminent)
+                .tint(Color(red: 134/255, green: 119/255, blue: 173/255))
             }
             .padding()
         }
@@ -67,7 +69,7 @@ private struct OnboardingPageView: View {
 
             Image(systemName: systemImage)
                 .font(.system(size: 64))
-                .foregroundColor(.accentColor)
+                .foregroundColor(Color(red: 120/255, green: 96/255, blue: 181/255))
 
             VStack(spacing: 8) {
                 Text(title)

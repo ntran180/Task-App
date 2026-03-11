@@ -3,7 +3,10 @@ import SwiftUI
 struct SplashView: View {
     var body: some View {
         ZStack {
-            LinearGradient(colors: [.purple, .blue], startPoint: .topLeading, endPoint: .bottomTrailing)
+            LinearGradient(colors: [
+                Color(red: 134/255, green: 119/255, blue: 173/255), // #8677AD
+                Color(red: 169/255, green: 161/255, blue: 181/255) // #A9A1B5
+            ], startPoint: .topLeading, endPoint: .bottomTrailing)
                 .ignoresSafeArea()
 
             VStack(spacing: 16) {

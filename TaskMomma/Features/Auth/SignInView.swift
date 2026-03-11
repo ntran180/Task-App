@@ -73,7 +73,7 @@ struct SignInView: View {
                         .fontWeight(.semibold)
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background(Color.accentColor)
+                        .background(Color(red: 134/255, green: 119/255, blue: 173/255))
                         .foregroundColor(.white)
                         .cornerRadius(12)
                 }
