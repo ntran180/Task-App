@@ -13,6 +13,7 @@ struct TaskEditorView: View {
     @State private var isArchived: Bool = false
 
     @State private var errorMessage: String?
+    @State private var selectedLocation: String = "Home"
 
     init(existingTask: TaskItem?) {
         self.existingTask = existingTask
@@ -36,6 +37,18 @@ struct TaskEditorView: View {
                         ForEach([2, 5, 10], id: \.self) { minutes in
                             Text("\(minutes) minutes")
                                 .tag(minutes)
+                        }
+                    }
+                }
+                /* hard coded locations for now
+                 in the future we can have locations like
+                 addresses in order to have more percise tracking */
+                
+                Section(header: Text("Location")) {
+                    Picker("Location", selection: $selectedLocation) {
+                        ForEach(["Home", "School", "Work"], id: \.self) { location in
+                            Text(location)
+                                .tag(location as String)
                         }
                     }
                 }
