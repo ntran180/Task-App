@@ -104,8 +104,15 @@ final class TaskRepository: ObservableObject {
             return
         }
         do {
-            let fetchedTasks = try await FirestoreService.shared.fetchTasks(uid: uid)
+            var fetchedTasks = try await FirestoreService.shared.fetchTasks(uid: uid)
             let fetchedWins = try await FirestoreService.shared.fetchWins(uid: uid)
+
+            // If this is a brand-new account with no tasks yet, seed defaults and refetch.
+            if fetchedTasks.isEmpty {
+                try await FirestoreService.shared.seedDefaultTasksIfNeeded(uid: uid)
+                fetchedTasks = try await FirestoreService.shared.fetchTasks(uid: uid)
+            }
+
             tasks = fetchedTasks
             wins = fetchedWins
         } catch {
