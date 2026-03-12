@@ -33,14 +33,14 @@ struct MainContainerView: View {
                 Label("Wins", systemImage: "rosette")
             }
             .tag(2)
-//
-//            NavigationStack {
-//                LeaderboardView()
-//            }
-//            .tabItem {
-//                Label("Leaderboard", systemImage: "trophy.fill")
-//            }
-//            .tag(3)
+
+            NavigationStack {
+                LeaderboardView()
+            }
+            .tabItem {
+                Label("Leaderboard", systemImage: "trophy.fill")
+            }
+            .tag(3)
 
             NavigationStack {
                 SettingsView()

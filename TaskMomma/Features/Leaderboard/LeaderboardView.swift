@@ -17,7 +17,21 @@ final class LeaderboardViewModel: ObservableObject {
         }
 
         do {
-            entries = try await FirestoreService.shared.fetchLeaderboard(limit: 50)
+            var fetched = try await FirestoreService.shared.fetchLeaderboard(limit: 50)
+
+            // Ensure the current user is always included in the leaderboard.
+            if let currentUser {
+                if let idx = fetched.firstIndex(where: { $0.id == currentUser.id }) {
+                    // Prefer the freshest totalWins from the profile listener if it is higher.
+                    if currentUser.totalWins > fetched[idx].totalWins {
+                        fetched[idx].totalWins = currentUser.totalWins
+                    }
+                } else {
+                    fetched.append(currentUser)
+                }
+            }
+
+            entries = Self.sortEntries(fetched)
         } catch {
             errorMessage = "Couldn’t load leaderboard. Add Firebase config and try again."
             entries = []
@@ -39,8 +53,12 @@ final class LeaderboardViewModel: ObservableObject {
         ]
 
         // Ensure sorted (and de-duped if currentUser overlaps)
+        return sortEntries(others)
+    }
+
+    private static func sortEntries(_ entries: [UserProfile]) -> [UserProfile] {
         var unique: [String: UserProfile] = [:]
-        for p in others {
+        for p in entries {
             unique[p.id] = p
         }
         return unique.values.sorted { lhs, rhs in
