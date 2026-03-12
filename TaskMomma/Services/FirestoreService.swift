@@ -173,8 +173,12 @@ final class FirestoreService {
 
     func seedDefaultTasksIfNeeded(uid: String) async throws {
         #if canImport(FirebaseFirestore)
-        let existing = try await tasksCollection(uid: uid).limit(to: 1).getDocuments()
-        guard existing.documents.isEmpty else { return }
+        // Only skip seeding if there is at least one ACTIVE (not archived) task.
+        let existingActive = try await tasksCollection(uid: uid)
+            .whereField("isArchived", isEqualTo: false)
+            .limit(to: 1)
+            .getDocuments()
+        guard existingActive.documents.isEmpty else { return }
 
         let defaults: [TaskItem] = [
             TaskItem(id: UUID().uuidString, title: "Drink a glass of water", description: nil, durationMinutes: 2),

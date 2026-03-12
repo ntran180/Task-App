@@ -7,14 +7,37 @@
 
 import Foundation
 import CoreLocation
-import Combine
+
+enum LocationType: String, Codable, CaseIterable{
+    case home = "Home"
+    case school = "School"
+    case work = "Work"
+    case custom = "Custom"
+}
+
+struct TaskLocation: Codable, Hashable {
+    var type: LocationType
+    var customName: String?
+    var latitude: Double?
+    var longitude: Double?
+
+    var displayName: String {
+        type == .custom ? (customName ?? "Custom") : type.rawValue
+    }
+
+    func isNearby(to userLocation: CLLocation, within meters: Double = 500) -> Bool {
+        guard let lat = latitude, let lon = longitude else { return false }
+        return userLocation.distance(from: CLLocation(latitude: lat, longitude: lon)) <= meters
+    }
+}
+
+
 
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private let manager = CLLocationManager()
 
      @Published var currentLocation: CLLocation?
      @Published var authorizationStatus: CLAuthorizationStatus = .notDetermined
-     @Published var locationHistory: [CLLocation] = []
     
     override init() {
         super.init()
@@ -43,9 +66,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let latest = locations.last else { return }
-        currentLocation = latest
-        locationHistory.append(latest)
+        currentLocation = locations.last
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
