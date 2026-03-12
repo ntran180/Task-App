@@ -15,6 +15,8 @@ struct WinsHistoryView: View {
                 Section(header: Text("Stats")) {
                     Text("Total wins: \(taskRepository.wins.count)")
                     Text("This week: \(winsThisWeek.count)")
+                    Text("Total time reclaimed: \(formattedMinutes(totalMinutes))")
+                    Text("This week’s time reclaimed: \(formattedMinutes(weekMinutes))")
                 }
 
                 ForEach(groupedByDay.keys.sorted(by: >), id: \.self) { day in
@@ -47,6 +49,29 @@ struct WinsHistoryView: View {
             return []
         }
         return taskRepository.wins.filter { $0.completedAt >= weekAgo }
+    }
+    
+    private var totalMinutes: Int {
+        taskRepository.wins.reduce(0) { sum, win in
+            sum + (win.durationActual ?? 0)
+        }
+    }
+
+    private var weekMinutes: Int {
+        winsThisWeek.reduce(0) { sum, win in
+            sum + (win.durationActual ?? 0)
+        }
+    }
+    
+    private func formattedMinutes(_ minutes: Int) -> String {
+        let hours = minutes / 60
+        let mins = minutes % 60
+        
+        if hours > 0 {
+            return "\(hours)h \(mins)m"
+        } else {
+            return "\(mins)m"
+        }
     }
 }
 #Preview {

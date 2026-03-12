@@ -13,6 +13,8 @@ struct TaskEditorView: View {
     @State private var isArchived: Bool = false
 
     @State private var errorMessage: String?
+    @State private var selectedLocation: LocationType = .home
+    @State private var customLocationName: String = ""
 
     init(existingTask: TaskItem?) {
         self.existingTask = existingTask
@@ -39,6 +41,21 @@ struct TaskEditorView: View {
                         }
                     }
                 }
+                /* hard coded locations for now
+                 in the future we can have locations like
+                 addresses in order to have more percise tracking */
+                
+                Section(header: Text("Location")) {
+                    Picker("Location", selection: $selectedLocation) {
+                        ForEach(LocationType.allCases, id: \.self) { type in
+                            Text(type.rawValue).tag(type as LocationType)
+                        }
+                    }
+                    if selectedLocation == .custom {
+                        TextField("Enter location", text: $customLocationName)
+                    }
+                }
+                
 
                 if existingTask != nil {
                     Section {
