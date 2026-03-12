@@ -190,7 +190,7 @@ final class TaskRepository: ObservableObject {
         }
         do {
             try await FirestoreService.shared.logWin(win, uid: uid)
-            self.wins.insert(win, at: 0)
+//            self.wins.insert(win, at: 0)
         } catch {
             print("Failed to log win: \(error)")
         }
