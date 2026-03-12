@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		722749502F610FDE005E659B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7227494F2F610FD7005E659B /* LocationManager.swift */; };
+		722749572F6116D2005E659B /* LocationLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722749562F6116CD005E659B /* LocationLabel.swift */; };
 		B10000000000000000000001 /* TaskMommaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000001 /* TaskMommaApp.swift */; };
 		B10000000000000000000002 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000002 /* RootView.swift */; };
 		B10000000000000000000003 /* ViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000003 /* ViewModels.swift */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		7227494F2F610FD7005E659B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		722749562F6116CD005E659B /* LocationLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationLabel.swift; sourceTree = "<group>"; };
 		E10000000000000000000001 /* TaskMomma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskMomma.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F10000000000000000000001 /* TaskMommaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskMommaApp.swift; sourceTree = "<group>"; };
 		F10000000000000000000002 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 		7227494E2F610FD0005E659B /* Location */ = {
 			isa = PBXGroup;
 			children = (
+				722749562F6116CD005E659B /* LocationLabel.swift */,
 				7227494F2F610FD7005E659B /* LocationManager.swift */,
 			);
 			path = Location;
@@ -301,6 +304,7 @@
 			files = (
 				B10000000000000000000001 /* TaskMommaApp.swift in Sources */,
 				B10000000000000000000002 /* RootView.swift in Sources */,
+				722749572F6116D2005E659B /* LocationLabel.swift in Sources */,
 				B10000000000000000000003 /* ViewModels.swift in Sources */,
 				B10000000000000000000004 /* TaskModels.swift in Sources */,
 				B10000000000000000000005 /* AuthService.swift in Sources */,

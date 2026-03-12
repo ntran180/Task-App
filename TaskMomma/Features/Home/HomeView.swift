@@ -26,6 +26,7 @@ struct HomeView: View {
                 .padding(.horizontal)
 
             Spacer()
+            LocationLabel()
 
             Button {
                 chooseRandomTask()
@@ -84,4 +85,5 @@ struct HomeView: View {
     HomeView()
         .environmentObject(TaskRepository())
         .environmentObject(AuthViewModel())
+        .environmentObject(LocationManager())
 }

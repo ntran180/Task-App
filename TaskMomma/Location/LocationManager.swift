@@ -52,3 +52,4 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         print("Location error: \(error.localizedDescription)")
     }
 }
+
