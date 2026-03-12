@@ -14,7 +14,7 @@ struct LocationLabel: View {
         if let location = locationManager.currentLocation {
             Text("Location: \(location.coordinate.latitude, specifier: "%.4f"), \(location.coordinate.longitude, specifier: "%.4f")")
         } else {
-            Text("Location: unavailable")
+            Text("")
         }
     }
 }
