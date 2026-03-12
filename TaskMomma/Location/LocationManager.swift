@@ -73,4 +73,37 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         print("Location error: \(error.localizedDescription)")
     }
 }
+class TaskLocationStore: ObservableObject {
+    @Published var taskLocations: [String: LocationType] = [:]  // taskID: LocationType
+    @Published var customLocationNames: [String: String] = [:]  // taskID: custom name
+
+    func setLocation(_ type: LocationType, for taskID: String, customName: String? = nil) {
+        taskLocations[taskID] = type
+        if let name = customName {
+            customLocationNames[taskID] = name
+        }
+    }
+
+    func getLocation(for taskID: String) -> LocationType? {
+        taskLocations[taskID]
+    }
+
+    func getLocationName(for taskID: String) -> String {
+        guard let type = taskLocations[taskID] else { return "No Location" }
+        if type == .custom {
+            return customLocationNames[taskID] ?? "Custom"
+        }
+        return type.rawValue
+    }
+
+    func removeLocation(for taskID: String) {
+        taskLocations.removeValue(forKey: taskID)
+        customLocationNames.removeValue(forKey: taskID)
+    }
+
+
+    func tasks(for type: LocationType, from taskIDs: [String]) -> [String] {
+        taskIDs.filter { taskLocations[$0] == type }
+    }
+}
 

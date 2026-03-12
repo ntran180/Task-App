@@ -59,6 +59,7 @@ struct TaskItem: Identifiable, Codable, Hashable {
     var categoryId: String?
     var createdAt: Date
     var isArchived: Bool
+    var location: TaskLocation?
 
     init(
         id: String,
