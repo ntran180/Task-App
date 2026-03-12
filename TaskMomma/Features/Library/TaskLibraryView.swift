@@ -31,8 +31,19 @@ struct TaskLibraryView: View {
                                 .foregroundColor(.secondary)
                         }
                     }
+                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                        if showArchived {
+                            Button("Restore") {
+                                restore(task)
+                            }.tint(.green)
+                        } else {
+                            Button("Archive") {
+                                archive(task)
+                            }.tint(.orange)
+                        }
+                    }
                 }
-                .onDelete(perform: archive)
+//                .onDelete(perform: handleRowAction)
             }
 
             if let errorMessage {
@@ -90,6 +101,58 @@ struct TaskLibraryView: View {
             }
         }
     }
+    
+    private func restore(at offsets: IndexSet) {
+        errorMessage = nil
+        guard authViewModel.user != nil else { return }
+        if authViewModel.isDemoUser {
+            for index in offsets {
+                let task = filteredTasks[index]
+                taskRepository.archiveTaskLocally(taskId: task.id)
+            }
+            return
+        }
+        
+        guard let uid = authViewModel.user?.id else { return }
+        for index in offsets {
+            let task = filteredTasks[index]
+            Task {
+                do {
+                    try await FirestoreService.shared.restoreTask(taskId: task.id, uid: uid)
+                } catch {
+                    await MainActor.run {
+                        self.errorMessage = "Failed to restore. Add Firebase confic and try again."
+                    }
+                }
+            }
+        }
+    }
+    
+    private func archive(_ task: TaskItem) {
+        errorMessage = nil
+        guard let uid = authViewModel.user?.id else { return }
+    
+        Task {
+            await taskRepository.archiveTask(taskId: task.id, uid: uid)
+        }
+    }
+    
+    private func restore(_ task: TaskItem) {
+        errorMessage = nil
+        guard let uid = authViewModel.user?.id else { return }
+        Task {
+            await taskRepository.restoreTask(taskId: task.id, uid: uid)
+        }
+    }
+    
+//    private func handleRowAction(at offsets: IndexSet) {
+//        if showArchived {
+//            restore(at: offsets)
+//        } else {
+//            archive(at: offsets)
+//        }
+//    }
+    
 }
 #Preview {
     TaskLibraryView()
