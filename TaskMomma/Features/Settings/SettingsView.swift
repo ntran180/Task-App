@@ -31,6 +31,14 @@ struct SettingsView: View {
                     }
             }
 
+            Section(header: Text("Social")) {
+                NavigationLink {
+                    FriendsView()
+                } label: {
+                    Text("Friends")
+                }
+            }
+
             if let errorMessage {
                 Section {
                     Text(errorMessage)
