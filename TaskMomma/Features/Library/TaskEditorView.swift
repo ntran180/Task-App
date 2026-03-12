@@ -13,7 +13,8 @@ struct TaskEditorView: View {
     @State private var isArchived: Bool = false
 
     @State private var errorMessage: String?
-    @State private var selectedLocation: String = "Home"
+    @State private var selectedLocation: LocationType = .home
+    @State private var customLocationName: String = ""
 
     init(existingTask: TaskItem?) {
         self.existingTask = existingTask
@@ -46,12 +47,15 @@ struct TaskEditorView: View {
                 
                 Section(header: Text("Location")) {
                     Picker("Location", selection: $selectedLocation) {
-                        ForEach(["Home", "School", "Work"], id: \.self) { location in
-                            Text(location)
-                                .tag(location as String)
+                        ForEach(LocationType.allCases, id: \.self) { type in
+                            Text(type.rawValue).tag(type as LocationType)
                         }
                     }
+                    if selectedLocation == .custom {
+                        TextField("Enter location", text: $customLocationName)
+                    }
                 }
+                
 
                 if existingTask != nil {
                     Section {
