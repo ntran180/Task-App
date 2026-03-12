@@ -22,6 +22,8 @@ struct TaskEditorView: View {
         _descriptionText = State(initialValue: existingTask?.description ?? "")
         _durationMinutes = State(initialValue: existingTask?.durationMinutes ?? 5)
         _isArchived = State(initialValue: existingTask?.isArchived ?? false)
+        _selectedLocation = State(initialValue: existingTask?.location?.type ?? .home)
+        _customLocationName = State(initialValue: existingTask?.location?.customName ?? "")
     }
 
     var body: some View {
@@ -106,6 +108,10 @@ struct TaskEditorView: View {
         task.description = descriptionText.isEmpty ? nil : descriptionText
         task.durationMinutes = durationMinutes
         task.isArchived = isArchived
+        task.location = TaskLocation(
+            type: selectedLocation,
+            customName: selectedLocation == .custom ? customLocationName : nil
+        )
 
         if authViewModel.isDemoUser {
             taskRepository.createOrUpdateTaskLocally(task)

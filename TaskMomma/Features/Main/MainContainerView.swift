@@ -4,6 +4,7 @@ struct MainContainerView: View {
     @EnvironmentObject private var authViewModel: AuthViewModel
     @EnvironmentObject private var taskRepository: TaskRepository
     @StateObject private var locationManager = LocationManager()
+    @StateObject private var taskLocationStore = TaskLocationStore()
 
     @State private var selectedTab: Int = 0
 
@@ -71,6 +72,7 @@ struct MainContainerView: View {
         .environmentObject(TaskRepository())
         .environmentObject(AuthViewModel())
         .environmentObject(LocationManager())
+        .environmentObject(TaskLocationStore())
     
     
 }
