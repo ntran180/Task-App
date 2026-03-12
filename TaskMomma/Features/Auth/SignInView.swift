@@ -1,5 +1,5 @@
 import SwiftUI
-import AuthenticationServices
+import UIKit
 
 private let testAccountEmail = "test@test.com"
 private let testAccountPassword = "12345678"
@@ -28,15 +28,28 @@ struct SignInView: View {
             .padding(.horizontal)
 
             VStack(spacing: 16) {
-                SignInWithAppleButton(.signIn) { request in
-                    AuthService.shared.prepareAppleRequest(request)
-                } onCompletion: { result in
+                Button {
                     Task {
-                        await signInWithApple(result)
+                        await signInWithGoogle()
                     }
+                } label: {
+                    HStack {
+                        Image(systemName: "g.circle.fill")
+                            .imageScale(.large)
+                        Text("Sign in with Google")
+                            .fontWeight(.semibold)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.white)
+                    .foregroundColor(.black)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(Color(.separator), lineWidth: 1)
+                    )
+                    .cornerRadius(12)
                 }
-                .signInWithAppleButtonStyle(.black)
-                .frame(height: 52)
+                .disabled(isLoading)
 
                 HStack {
                     Rectangle()
@@ -103,16 +116,24 @@ struct SignInView: View {
         }
     }
 
-    private func signInWithApple(_ result: Result<ASAuthorization, Error>) async {
+    private func signInWithGoogle() async {
+        guard let rootVC = UIApplication.shared.connectedScenes
+            .compactMap({ $0 as? UIWindowScene })
+            .flatMap({ $0.windows })
+            .first(where: { $0.isKeyWindow })?.rootViewController else {
+            errorMessage = "Unable to start Google sign-in."
+            return
+        }
+
         isLoading = true
         errorMessage = nil
         defer { isLoading = false }
 
         do {
-            try await AuthService.shared.signInWithApple(result: result)
+            try await AuthService.shared.signInWithGoogle(presenting: rootVC)
         } catch {
-            errorMessage = "Sign in failed. Please try again."
-            print("Apple sign-in error: \(error)")
+            errorMessage = "Google sign in failed. Please try again."
+            print("Google sign-in error: \(error)")
         }
     }
 

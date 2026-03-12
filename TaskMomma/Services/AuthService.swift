@@ -12,18 +12,19 @@ import FirebaseAuth
 import FirebaseFirestore
 #endif
 
-#if canImport(AuthenticationServices)
-import AuthenticationServices
-#endif
-
 #if canImport(CryptoKit)
 import CryptoKit
+#endif
+
+#if canImport(GoogleSignIn)
+import GoogleSignIn
 #endif
 
 enum AuthServiceError: Error {
     case firebaseNotLinked
     case missingNonce
     case invalidAppleToken
+    case invalidGoogleToken
 }
 
 /// Thin wrapper around FirebaseAuth.
@@ -124,46 +125,42 @@ final class AuthService {
 
     // MARK: - Sign In with Apple
 
-    #if canImport(AuthenticationServices)
-    private var currentNonce: String? {
-        get { UserDefaults.standard.string(forKey: "taskmomma.apple.nonce") }
-        set { UserDefaults.standard.setValue(newValue, forKey: "taskmomma.apple.nonce") }
-    }
+    // (Existing Apple Sign In implementation can be removed from the project if no longer needed.)
 
-    func prepareAppleRequest(_ request: ASAuthorizationAppleIDRequest) {
-        let nonce = randomNonceString()
-        currentNonce = nonce
-        request.requestedScopes = [.fullName, .email]
-        request.nonce = sha256(nonce)
-    }
+    // MARK: - Sign In with Google
 
-    func signInWithApple(result: Result<ASAuthorization, Error>) async throws {
-        #if canImport(FirebaseAuth)
-        switch result {
-        case .failure(let error):
-            throw error
-        case .success(let authorization):
-            guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential else {
-                throw AuthServiceError.invalidAppleToken
-            }
-            try await signInWithAppleCredential(credential)
+    func signInWithGoogle(presenting viewController: AnyObject) async throws {
+        #if canImport(GoogleSignIn)
+        guard let presentingVC = viewController as? UIViewController else {
+            throw AuthServiceError.invalidGoogleToken
+        }
+
+        #if canImport(FirebaseCore)
+        guard let clientID = FirebaseApp.app()?.options.clientID else {
+            throw AuthServiceError.firebaseNotLinked
         }
         #else
         throw AuthServiceError.firebaseNotLinked
         #endif
-    }
 
-    private func signInWithAppleCredential(_ credential: ASAuthorizationAppleIDCredential) async throws {
-        #if canImport(FirebaseAuth)
-        guard let nonce = currentNonce else { throw AuthServiceError.missingNonce }
-        guard let tokenData = credential.identityToken,
-              let tokenString = String(data: tokenData, encoding: .utf8) else {
-            throw AuthServiceError.invalidAppleToken
+        let config = GIDConfiguration(clientID: clientID)
+        GIDSignIn.sharedInstance.configuration = config
+
+        let result = try await GIDSignIn.sharedInstance.signIn(withPresenting: presentingVC)
+
+        guard
+            let idToken = result.user.idToken?.tokenString
+        else {
+            throw AuthServiceError.invalidGoogleToken
         }
 
-        let oauthCredential = OAuthProvider.credential(withProviderID: "apple.com", idToken: tokenString, rawNonce: nonce)
-        _ = try await withCheckedThrowingContinuation { continuation in
-            Auth.auth().signIn(with: oauthCredential) { result, error in
+        let accessToken = result.user.accessToken.tokenString
+
+        #if canImport(FirebaseAuth)
+        let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
+
+        _ = try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<AuthDataResult, Error>) in
+            Auth.auth().signIn(with: credential) { result, error in
                 if let error {
                     continuation.resume(throwing: error)
                     return
@@ -174,39 +171,11 @@ final class AuthService {
         #else
         throw AuthServiceError.firebaseNotLinked
         #endif
-    }
 
-    private func randomNonceString(length: Int = 32) -> String {
-        precondition(length > 0)
-        let charset: [Character] = Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
-        var result = ""
-        var remaining = length
-
-        while remaining > 0 {
-            let randoms: [UInt8] = (0..<16).map { _ in
-                UInt8.random(in: 0...255)
-            }
-            randoms.forEach { random in
-                if remaining == 0 { return }
-                if random < charset.count {
-                    result.append(charset[Int(random)])
-                    remaining -= 1
-                }
-            }
-        }
-        return result
-    }
-
-    private func sha256(_ input: String) -> String {
-        #if canImport(CryptoKit)
-        let inputData = Data(input.utf8)
-        let hashed = SHA256.hash(data: inputData)
-        return hashed.map { String(format: "%02x", $0) }.joined()
         #else
-        return input
+        throw AuthServiceError.firebaseNotLinked
         #endif
     }
-    #endif
 
     func signOut() throws {
         #if canImport(FirebaseAuth)
