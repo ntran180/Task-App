@@ -192,7 +192,14 @@ final class FirestoreService {
 
             TaskItem(id: UUID().uuidString, title: "Do a quick room reset", description: "Put 10 items back where they belong.", durationMinutes: 10),
             TaskItem(id: UUID().uuidString, title: "Plan your top 3 priorities", description: "Write them down somewhere visible.", durationMinutes: 10),
-            TaskItem(id: UUID().uuidString, title: "Learn one tiny thing", description: "Read one article or watch a short tutorial.", durationMinutes: 10)
+            TaskItem(id: UUID().uuidString, title: "Learn one tiny thing", description: "Read one article or watch a short tutorial.", durationMinutes: 10),
+
+            // Extra defaults (no locationHint so they act as \"anywhere\")
+            TaskItem(id: UUID().uuidString, title: "Inbox zero for 5 emails", description: "Archive, reply, or delete just five messages.", durationMinutes: 5),
+            TaskItem(id: UUID().uuidString, title: "Brain dump your worries", description: "Write down everything on your mind for 5 minutes.", durationMinutes: 5),
+            TaskItem(id: UUID().uuidString, title: "Stretch your legs", description: "Stand up and move around your space.", durationMinutes: 2),
+            TaskItem(id: UUID().uuidString, title: "Clean up one app on your phone", description: "Delete unused apps or clear notifications.", durationMinutes: 5),
+            TaskItem(id: UUID().uuidString, title: "Skim one article you saved", description: "Open your reading list and pick just one.", durationMinutes: 10)
         ]
 
         let batch = db.batch()
