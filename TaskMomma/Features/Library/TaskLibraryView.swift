@@ -8,6 +8,16 @@ struct TaskLibraryView: View {
     @State private var isPresentingEditor: Bool = false
     @State private var editingTask: TaskItem?
     @State private var errorMessage: String?
+    @State private var selectedDuration: TaskDurationFilter = .all
+    
+    enum TaskDurationFilter: String, CaseIterable, Identifiable {
+        case all = "All"
+        case twoMinutes = "2 min"
+        case fiveMinutes = "5 min"
+        case tenMinutes = "10 min"
+        
+        var id: Self { self }
+    }
 
     var body: some View {
         VStack {
@@ -16,6 +26,14 @@ struct TaskLibraryView: View {
             }
             .padding(.horizontal)
             .padding(.top)
+            
+            HStack(spacing: 12) {
+                ForEach(TaskDurationFilter.allCases) { filter in
+                    filterButton(for: filter)
+                }
+            }
+            .padding(.horizontal)
+            .padding(.top, 4)
 
             List {
                 ForEach(filteredTasks) { task in
@@ -71,7 +89,21 @@ struct TaskLibraryView: View {
 
     private var filteredTasks: [TaskItem] {
         taskRepository.tasks.filter { task in
-            showArchived ? task.isArchived : !task.isArchived
+            let archiveCheck = showArchived ? task.isArchived : !task.isArchived
+            let durationCheck: Bool
+            
+            switch selectedDuration {
+            case .all:
+                durationCheck = true
+            case .twoMinutes:
+                durationCheck = task.durationMinutes == 2
+            case .fiveMinutes:
+                durationCheck = task.durationMinutes == 5
+            case .tenMinutes:
+                durationCheck = task.durationMinutes == 10
+            }
+            
+            return archiveCheck && durationCheck
         }
     }
 
@@ -142,6 +174,25 @@ struct TaskLibraryView: View {
         guard let uid = authViewModel.user?.id else { return }
         Task {
             await taskRepository.restoreTask(taskId: task.id, uid: uid)
+        }
+    }
+    
+    private func filterButton(for filter: TaskDurationFilter) -> some View {
+        let isSelected = selectedDuration == filter
+        
+        let backgroundColor = isSelected ? Color.accentColor : Color(.systemGray6)
+        let foregroundColor = isSelected ? Color.white : Color.primary
+
+        return Button {
+            selectedDuration = filter
+        } label: {
+            Text(filter.rawValue)
+                .padding(.vertical, 8)
+                .font(.subheadline.weight(.medium))
+                .frame(maxWidth: .infinity)
+                .background(backgroundColor)
+                .foregroundColor(foregroundColor)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
         }
     }
     
