@@ -10,7 +10,6 @@ struct TaskEditorView: View {
     @State private var title: String = ""
     @State private var descriptionText: String = ""
     @State private var durationMinutes: Int = 5
-    @State private var isArchived: Bool = false
 
     @State private var errorMessage: String?
     @State private var selectedLocation: LocationType = .home
@@ -21,7 +20,6 @@ struct TaskEditorView: View {
         _title = State(initialValue: existingTask?.title ?? "")
         _descriptionText = State(initialValue: existingTask?.description ?? "")
         _durationMinutes = State(initialValue: existingTask?.durationMinutes ?? 5)
-        _isArchived = State(initialValue: existingTask?.isArchived ?? false)
     }
 
     var body: some View {
@@ -56,12 +54,6 @@ struct TaskEditorView: View {
                     }
                 }
                 
-
-                if existingTask != nil {
-                    Section {
-                        Toggle("Archived", isOn: $isArchived)
-                    }
-                }
 
                 if let errorMessage {
                     Section {
@@ -105,7 +97,6 @@ struct TaskEditorView: View {
         task.title = trimmedTitle
         task.description = descriptionText.isEmpty ? nil : descriptionText
         task.durationMinutes = durationMinutes
-        task.isArchived = isArchived
 
         if authViewModel.isDemoUser {
             taskRepository.createOrUpdateTaskLocally(task)

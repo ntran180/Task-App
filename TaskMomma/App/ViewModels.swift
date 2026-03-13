@@ -142,43 +142,11 @@ final class TaskRepository: ObservableObject {
     }
 
     func activeTasks(for durationMinutes: Int) -> [TaskItem] {
-        tasks.filter { !$0.isArchived && $0.durationMinutes == durationMinutes }
+        tasks.filter { $0.durationMinutes == durationMinutes }
     }
     
     func allActiveTasks() -> [TaskItem] {
-        tasks.filter { !$0.isArchived }
-    }
-    
-    func allArchivedTasks() -> [TaskItem] {
-        tasks.filter { $0.isArchived}
-    }
-    
-    func archiveTask(taskId: String, uid: String) async {
-        if let i = tasks.firstIndex(where: { $0.id == taskId}) {
-            tasks[i].isArchived = true
-        }
-        if uid == demoUserID {
-            return
-        }
-        do {
-            try await FirestoreService.shared.archiveTask(taskId: taskId, uid: uid)
-        } catch {
-            print("Failed to archive task: \(error)")
-        }
-    }
-    
-    func restoreTask(taskId: String, uid: String) async {
-        if let i = tasks.firstIndex(where: { $0.id == taskId }) {
-            tasks[i].isArchived = false
-        }
-        if uid == demoUserID {
-            return
-        }
-        do {
-            try await FirestoreService.shared.restoreTask(taskId: taskId, uid: uid)
-        } catch {
-            print("Failed to restore task: \(error)")
-        }
+        tasks
     }
 
     func recordWin(for task: TaskItem, actualSeconds: Int?, uid: String) async -> Int {
@@ -198,12 +166,6 @@ final class TaskRepository: ObservableObject {
     }
 
     // MARK: - Demo-only local updates (no Firestore)
-
-    func archiveTaskLocally(taskId: String) {
-        if let i = tasks.firstIndex(where: { $0.id == taskId }) {
-            tasks[i].isArchived = true
-        }
-    }
 
     func createOrUpdateTaskLocally(_ task: TaskItem) {
         if let i = tasks.firstIndex(where: { $0.id == task.id }) {

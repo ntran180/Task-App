@@ -12,10 +12,6 @@ import FirebaseAuth
 import FirebaseFirestore
 #endif
 
-#if canImport(CryptoKit)
-import CryptoKit
-#endif
-
 #if canImport(GoogleSignIn)
 import GoogleSignIn
 #endif
@@ -23,7 +19,6 @@ import GoogleSignIn
 enum AuthServiceError: Error {
     case firebaseNotLinked
     case missingNonce
-    case invalidAppleToken
     case invalidGoogleToken
 }
 
@@ -122,10 +117,6 @@ final class AuthService {
         }
     }
     #endif
-
-    // MARK: - Sign In with Apple
-
-    // (Existing Apple Sign In implementation can be removed from the project if no longer needed.)
 
     // MARK: - Sign In with Google
 
